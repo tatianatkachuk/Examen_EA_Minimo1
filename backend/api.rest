@@ -1,0 +1,11 @@
+###
+GET http://localhost:4000/api/eventos
+
+###
+GET http://localhost:4000/api/eventos/618e7ac99c855113ce741084
+
+###
+DELETE http://localhost:4000/api/eventos/618e809191c0028b3cfc4249
+
+###
+GET http://localhost:4000/api/eventos/personas/618e94303342ff211cea74ee

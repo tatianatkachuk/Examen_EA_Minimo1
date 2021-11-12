@@ -1,0 +1,128 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card">
+        <div class="card-body">
+          <span class="titulo">{{titleForm}}</span>
+
+          <!-- FORM -->
+          <form
+          (ngSubmit)="createEvento()"
+          [formGroup]="eventoForm"><!-- Link html to .ts-->
+
+          <div class="form-group mt-3">
+          <input
+          type="text"
+          formControlName="nombre"
+          class="form-control form-control-lg"
+          placeholder="Escribe el nombre"
+          required>
+            <div class="text-danger"
+              *ngIf="eventoForm.get('nombre')?.hasError('required')
+              && eventoForm.get('nombre')?.touched">
+              <span>El nombre es <strong>requerido</strong></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+          <input
+          type="text"
+          formControlName="fecha"
+          class="form-control form-control-lg"
+          placeholder="Escribe la fecha"
+          required>
+          <div class="text-danger"
+              *ngIf="eventoForm.get('fecha')?.hasError('required')
+              && eventoForm.get('fecha')?.touched">
+              <span>La fecha es <strong>requerida</strong></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+          <input
+          type="text"
+          formControlName="descripcion"
+          class="form-control form-control-lg"
+          placeholder="Escibe la descripcion"
+          required>
+          <div class="text-danger"
+              *ngIf="eventoForm.get('descripcion')?.hasError('required')
+              && eventoForm.get('descripcion')?.touched">
+              <span>La descripcion es <strong>requerida</strong></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+          <input
+          type="number"
+          formControlName="lat"
+          class="form-control form-control-lg"
+          placeholder="Escribe la latitud"
+          required>
+          <div class="text-danger"
+              *ngIf="eventoForm.get('lat')?.hasError('required')
+              && eventoForm.get('lat')?.touched">
+              <span>La latitud es <strong>requerida</strong></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <input
+          type="number"
+          formControlName="lng"
+          class="form-control form-control-lg"
+          placeholder="Escribe la longitud"
+          required>
+          <div class="text-danger"
+              *ngIf="eventoForm.get('lng')?.hasError('required')
+              && eventoForm.get('lng')?.touched">
+              <span>La longitud es <strong>requerida</strong></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <input
+          type="text"
+          formControlName="id_evento"
+          class="form-control form-control-lg"
+          placeholder="Escibe el ID del evento"
+          required>
+          <div class="text-danger"
+              *ngIf="eventoForm.get('id_evento')?.hasError('required')
+              && eventoForm.get('id_evento')?.touched">
+              <span>El ID del evento es <strong>requerido</strong></span>
+            </div>
+          </div>
+
+        <div class="form-group">
+          <input
+          type="text"
+          formControlName="id_persona"
+          class="form-control form-control-lg"
+          placeholder="Escibe el ID del evento"
+          required>
+          <div class="text-danger"
+              *ngIf="eventoForm.get('id_persona')?.hasError('required')
+              && eventoForm.get('id_persona')?.touched">
+              <span>El ID de la persona es <strong>requerido</strong></span>
+            </div>
+        </div>
+
+        <!--BUTTONS-->
+        <div class="mt-3">
+          <button
+          class="btn btn-secondary btn-lg float-start"
+          routerLink="/eventos">CANCEL</button>
+          <button
+          [disabled]= "eventoForm.invalid"
+          class="btn btn-success btn-lg float-end"
+          type="submit">CONFIRM</button>
+        </div>
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

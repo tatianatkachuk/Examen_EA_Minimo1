@@ -1,0 +1,55 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col lg-8 offset-lg-2">
+      <div class="card">
+        <div class="card-body">
+          <span class="titulo">Eventos List</span>
+
+          <button class="btn btn-success float-end" routerLink="/eventos/new">Create</button>
+          <table
+          *ngIf="listEventos.length>0"
+          class="table table-striped mt-3 table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Latitud</th>
+                <th scope="col">Longitud</th>
+                <th scope="col">ID del evento</th>
+                <th scope="col">ID de la persona</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let evento of listEventos">
+                <td>{{evento.nombre}}</td>
+                <td>{{evento.fecha}}</td>
+                <td>{{evento.descripcion}}</td>
+                <td>{{evento.lat}}</td>
+                <td>{{evento.lng}}</td>
+                <td>{{evento.id_evento}}</td>
+                <td>{{evento.id_persona}}</td>
+                <td>
+                  <i
+                  (click)="getPersona(evento.id_persona)"
+                  [routerLink]="['/personas/info',evento.id_persona]"
+                  class="fas fa-info text-primary"></i>
+                  <i
+                  [routerLink]="['/eventos/edit',evento.id_evento]"
+                  class="fas fa-edit text-secondary;"style="color:green;"></i>
+                  <i
+                  (click)="deleteEvento(evento._id)"
+                  class="fas fa-trash-alt text-danger"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <h5 style = "text-align: start; margin-top: 10px;"
+          *ngIf="listEventos.length==0"
+          >Todavía no hay eventos.</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
